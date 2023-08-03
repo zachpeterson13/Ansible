@@ -8,13 +8,10 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y curl git ansible build-essential && \
     apt-get clean autoclean && \
-    apt-get autoremove --yes
+    apt-get autoremove --yes && \
+    apt-get -y install sudo && \
+    apt install vim
 
 FROM base AS stage1
-RUN addgroup --gid 1000 zach
-RUN adduser --gecos zach --uid 1000 --gid 1000 --disabled-password zach
-USER zach
-WORKDIR /home/zach
 
-FROM stage1
 COPY . .
