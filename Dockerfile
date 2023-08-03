@@ -9,8 +9,7 @@ RUN apt-get update && \
     apt-get install -y curl git ansible build-essential && \
     apt-get clean autoclean && \
     apt-get autoremove --yes && \
-    apt-get -y install sudo && \
-    apt install vim
+    apt-get -y install sudo
 
 FROM base AS stage1
 

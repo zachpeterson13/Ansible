@@ -6,8 +6,15 @@
   shell: chsh -s $(which zsh)
   tags: *zsh_tags
 
+- name: Check that the somefile.conf exists
+  stat:
+    path: /home/theprimeagen/.oh-my-zsh
+  register: oh_my_stats
+  tags: *tags_for_zsh_tasks
+
 - name: Oh-My-Zsh
   shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  when: oh_my_stats.stat.exists == false
   tags: *zsh_tags
 
 - name: Install zsh-autosuggestions
