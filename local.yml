@@ -10,6 +10,10 @@
         - install
         - core
   tasks:
+    - include: tasks/git-setup.yml
     - include: tasks/core-setup.yml
     - include: tasks/zsh-setup.yml
     - include: tasks/nvim-setup.yml
+    - include: tasks/brave.yml
+    - include: tasks/dotfiles.yml
+    - include: tasks/productivity-tools.yml
